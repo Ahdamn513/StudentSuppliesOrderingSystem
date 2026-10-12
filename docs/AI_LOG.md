@@ -247,4 +247,32 @@ CONSTRAINTS
 - The receipt must keep a snapshot of the purchased items (copy them), so
   clearing the cart later cannot affect an already-built receipt.
 
-OUTPUT
+OUTPUT FORMAT
+1. The complete updated js/app.js in one code block.
+2. A short explanation of how Confirm Payment flows from click to receipt.
+3. A test table with exact inputs and expected results for: blank, "abc",
+   "12.5.3", "-50", "0", less than the total, exactly the total, more than
+   the total, empty cart, a click on Add to Cart after payment, and New
+   Transaction.
+```
+
+**Purpose:**
+Generate the cash payment feature: validation for empty, non-numeric, negative, and insufficient amounts, change computation, the digital receipt with a reference number and date/time, and the New Transaction reset.
+
+**AI Response:**
+The AI produced an updated `js/app.js` that keeps the existing cart code and adds payment, validation, receipt, and transaction locking. `validateCart()` and `validateCash(text, total)` return an error message string (or an empty string when valid) and check in the required order: empty cart, blank, negative, not a valid number, and not enough cash. A regular expression (`/^\d+(\.\d+)?$/`) is used for the number check because `Number()` wrongly accepts `""` and `"1e3"`. `confirmPayment()` computes change with `roundMoney`, copies the cart into a snapshot, builds the receipt with `createElement` and `textContent` (`buildReceipt`, `buildReceiptTable`, `generateReferenceNumber`), and calls `setTransactionLocked(true)`. A boolean flag (`isTransactionComplete`) blocks `addToCart`, `changeQuantity`, and `removeFromCart`, and the buttons are also disabled. `startNewTransaction()` clears the cart, cash input, change, message, and receipt, then unlocks everything. It also gave an 18-row test table.
+
+**Screenshots:**
+
+![Payment error: blank](screenshots/payment-error-blank.png)
+
+![Payment error: not enough cash](screenshots/payment-error-low.png)
+
+![Digital receipt](screenshots/receipt.png)
+
+**Your Evaluation:**
+[Correct / partially correct / incorrect, and why. Which tests passed (blank, "abc", "-50", too low, exact amount, new transaction)? Any bug you found, even a small one?]
+
+**Modifications Made:**
+- [e.g., changed an error message / changed the shop title / renamed a function]
+- [Add anything else you changed]
