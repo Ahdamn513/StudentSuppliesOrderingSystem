@@ -59,6 +59,7 @@ CONSTRAINTS
 OUTPUT FORMAT
 Each file in its own code block, labeled with its path. After the
 code, list the element ids and classes I'll need for JavaScript. |
+![Product list interface](screenshots/Prompt1.png)
 
 | Purpose | What I wanted the AI to accomplish |
 
