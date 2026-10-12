@@ -1,0 +1,287 @@
+/* ===== Base styles ===== */
+:root {
+  --color-bg: #f4f6f8;
+  --color-card: #ffffff;
+  --color-text: #1f2933;
+  --color-muted: #616e7c;
+  --color-border: #d9e2ec;
+  --color-primary: #2563eb;
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+  --color-secondary: #475569;
+  --radius: 8px;
+  --space: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* ===== Header and footer ===== */
+.app-header {
+  padding: 1.5rem var(--space);
+  text-align: center;
+  color: #ffffff;
+  background-color: var(--color-primary);
+}
+
+.app-header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+}
+
+.app-header p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.app-footer {
+  padding: var(--space);
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+/* ===== Page layout (mobile first: one column) ===== */
+.app-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space);
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space);
+}
+
+/* ===== Cards ===== */
+.card {
+  padding: 1.25rem;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.card h2 {
+  margin: 0 0 var(--space);
+  font-size: 1.25rem;
+}
+
+/* ===== Product list ===== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space);
+  text-align: center;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.product-name {
+  margin: 0 0 0.25rem;
+  font-size: 1.1rem;
+}
+
+.product-price {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ===== Forms ===== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space);
+}
+
+label {
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+input:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  padding: 0.65rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-primary   { background-color: var(--color-primary); }
+.btn-success   { background-color: var(--color-success); }
+.btn-danger    { background-color: var(--color-danger); }
+.btn-secondary { background-color: var(--color-secondary); }
+
+/* Smaller buttons for the cart row actions (+, -, Remove) */
+.btn-small {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.875rem;
+}
+
+.qty-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ===== Cart table ===== */
+.table-wrapper {
+  overflow-x: auto; /* lets the table scroll on small screens */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  background-color: var(--color-bg);
+  white-space: nowrap;
+}
+
+.empty-row td {
+  text-align: center;
+  color: var(--color-muted);
+}
+
+/* ===== Order summary ===== */
+.summary-list {
+  margin: 0;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.summary-item dt {
+  color: var(--color-muted);
+}
+
+.summary-item dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.summary-total dd {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+/* ===== Payment section ===== */
+.payment-message {
+  min-height: 1.5rem;
+  margin-bottom: var(--space);
+}
+
+/* Classes JavaScript can add to a payment message later */
+.message {
+  padding: 0.75rem var(--space);
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.message.error {
+  color: #7f1d1d;
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+}
+
+.message.success {
+  color: #14532d;
+  background-color: #dcfce7;
+  border: 1px solid #86efac;
+}
+
+.change-display {
+  margin: var(--space) 0 0;
+  font-size: 1.1rem;
+}
+
+.change-display strong {
+  color: var(--color-success);
+}
+
+/* ===== Receipt section ===== */
+.receipt-content {
+  min-height: 4rem;
+  margin-bottom: var(--space);
+  padding: var(--space);
+  font-family: "Courier New", monospace;
+  background-color: #fffef5;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius);
+}
+
+.receipt-placeholder {
+  margin: 0;
+  text-align: center;
+  color: var(--color-muted);
+}
+
+/* ===== Desktop layout (tablet and wider) ===== */
+@media (min-width: 768px) {
+  .app-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Product list and cart span the full width */
+  #product-section,
+  #cart-section {
+    grid-column: 1 / -1;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,11 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Supplies Ordering System</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+
+  <!-- Page header -->
+  <header class="app-header">
+    <h1>Student Supplies Ordering System</h1>
+    <p>Choose your school supplies, pay in cash, and get a digital receipt.</p>
+  </header>
+
+  <main class="app-layout">
+
+    <!-- 1. Product list (hard-coded products, JavaScript reads the data attributes) -->
+    <section class="card" id="product-section">
+      <h2>Product List</h2>
+      <ul class="product-grid" id="product-list">
+        <li class="product-card">
+          <h3 class="product-name">Ballpen</h3>
+          <p class="product-price">₱12.00</p>
+          <button type="button" class="btn btn-primary add-to-cart-btn"
+                  data-id="1" data-name="Ballpen" data-price="12">Add to Cart</button>
+        </li>
+        <li class="product-card">
+          <h3 class="product-name">Pencil</h3>
+          <p class="product-price">₱10.00</p>
+          <button type="button" class="btn btn-primary add-to-cart-btn"
+                  data-id="2" data-name="Pencil" data-price="10">Add to Cart</button>
+        </li>
+        <li class="product-card">
+          <h3 class="product-name">Notebook</h3>
+          <p class="product-price">₱35.00</p>
+          <button type="button" class="btn btn-primary add-to-cart-btn"
+                  data-id="3" data-name="Notebook" data-price="35">Add to Cart</button>
+        </li>
+        <li class="product-card">
+          <h3 class="product-name">Yellow Pad</h3>
+          <p class="product-price">₱45.00</p>
+          <button type="button" class="btn btn-primary add-to-cart-btn"
+                  data-id="4" data-name="Yellow Pad" data-price="45">Add to Cart</button>
+        </li>
+        <li class="product-card">
+          <h3 class="product-name">Eraser</h3>
+          <p class="product-price">₱8.00</p>
+          <button type="button" class="btn btn-primary add-to-cart-btn"
+                  data-id="5" data-name="Eraser" data-price="8">Add to Cart</button>
+        </li>
+        <li class="product-card">
+          <h3 class="product-name">Ruler</h3>
+          <p class="product-price">₱15.00</p>
+          <button type="button" class="btn btn-primary add-to-cart-btn"
+                  data-id="6" data-name="Ruler" data-price="15">Add to Cart</button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 2. Shopping cart -->
+    <section class="card" id="cart-section">
+      <h2>Shopping Cart</h2>
+      <div class="table-wrapper">
+        <table id="cart-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="cart-table-body">
+            <!-- Cart rows are added here by JavaScript -->
+            <tr class="empty-row">
+              <td colspan="5">Your cart is empty.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3. Order summary -->
+    <section class="card" id="summary-section">
+      <h2>Order Summary</h2>
+      <dl class="summary-list">
+        <div class="summary-item">
+          <dt>Number of Items</dt>
+          <dd id="item-count">0</dd>
+        </div>
+        <div class="summary-item summary-total">
+          <dt>Total Amount</dt>
+          <dd id="total-amount">₱0.00</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- 4. Payment section -->
+    <section class="card" id="payment-section">
+      <h2>Payment</h2>
+      <!-- Message area for validation errors -->
+      <div id="payment-message" class="payment-message" role="status" aria-live="polite">
+        <!-- JavaScript will insert messages here -->
+      </div>
+      <div class="form-group">
+        <label for="cash-input">Cash Amount (₱)</label>
+        <!-- type="text" so non-numeric input like "abc" can be detected later -->
+        <input type="text" id="cash-input" inputmode="decimal" placeholder="0.00" autocomplete="off">
+      </div>
+      <button type="button" id="confirm-payment-btn" class="btn btn-success">Confirm Payment</button>
+      <p class="change-display">
+        Change: <strong id="change-amount">₱0.00</strong>
+      </p>
+    </section>
+
+    <!-- 5. Receipt section (placeholder, JavaScript fills it in after payment) -->
+    <section class="card receipt-card" id="receipt-section">
+      <h2>Receipt</h2>
+      <div id="receipt-content" class="receipt-content">
+        <p class="receipt-placeholder">Your receipt will appear here after payment.</p>
+      </div>
+      <button type="button" id="new-transaction-btn" class="btn btn-secondary">New Transaction</button>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Student Supplies Ordering System &middot; IT415 Practice</p>
+  </footer>
+
+  <!-- JavaScript (logic will be added later) -->
+  <script src="js/app.js"></script>
 </body>
 </html>
